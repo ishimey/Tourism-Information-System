@@ -2,17 +2,19 @@
 $login_error = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $email_phone = $_POST['email_phone'];
-    $password = $_POST['password'];
+    $email_phone = $_POST["email_phone"];
+    $password = $_POST["password"];
 
     // Dummy credentials for demonstration
     $valid_user = "user@example.com";
     $valid_pass = "nepal123";
 
     if ($email_phone === $valid_user && $password === $valid_pass) {
-        $login_error = "<p class='success'>Login Successful! Welcome to Nepal Tourism Info.</p>";
+        $login_error =
+            "<p class='success'>Login Successful! Welcome to Nepal Tourism Info.</p>";
     } else {
-        $login_error = "<p class='error'>Invalid credentials. Please try again.</p>";
+        $login_error =
+            "<p class='error'>Invalid credentials. Please try again.</p>";
     }
 }
 ?>
@@ -22,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
   <meta charset="UTF-8">
   <title>Tourism Information System - Login</title>
-  <link rel="stylesheet" type="text/css" href="login.css">
+  <link rel="stylesheet" type="text/css" href="./public/login.css">
 </head>
 <body>
   <div class="login-box">
@@ -52,4 +54,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   </script>
 </body>
 </html>
-
