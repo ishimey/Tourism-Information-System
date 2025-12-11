@@ -77,7 +77,6 @@ session_start();
         <p>Narayani River is famous for boating, riverbanks, and scenic peaceful beauty.</p>
     </div>
     
-</div>
     <div class="destination-box">
         <h3>Janakpur</h3>
         <p>Janakpur is a significant religious site, known for the Janaki Mandir and its cultural heritage.</p>
@@ -94,7 +93,6 @@ session_start();
         <h3>Bandipur</h3>
         <p>Bandipur a picturesque hilltop town known for its preserved cultural heritage, stunning mountain views, and traditional Newari architecture.</p>
 </div>
-
-
+</div>
 </body>
 </html>

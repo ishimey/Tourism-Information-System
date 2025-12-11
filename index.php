@@ -51,6 +51,10 @@ session_start();
 
     nav ul li {
       margin: 5px;
+      color: white;
+    }
+    .username{
+      font-weight: bold;
     }
 
     nav ul li a {
@@ -163,11 +167,12 @@ session_start();
   <nav>
     <ul>
       <li><a href="#">Home</a></li>
-      <li><a href="#">Destinations</a></li>
-      <li><a href="#">Hotels</a></li>
-      <li><a href="#">Contact</a></li>
+      <li><a href="destinations.php">Destinations</a></li>
+      <li><a href="hotels.php">Hotels</a></li>
+      <li><a href="contacts.php">Contact</a></li>
       <?php if(isset($_SESSION['username'])){ ?>
-<li><?php echo $_SESSION['username'] ?></li>
+<li class="username" ><?php echo $_SESSION['username'] ?></li>
+        <li><a href="logout.php">logout</a></li>
       <?php }else{ ?>
       <li><a href="login.php">Login</a></li>
       <?php }?>

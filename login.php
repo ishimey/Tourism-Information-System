@@ -1,41 +1,41 @@
 <?php
-$login_error = "";
-
+$connection = new mysqli("localhost", "root", "", "tourism");
+session_start();
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $email_phone = $_POST["email_phone"];
-    $password = $_POST["password"];
-
-    // Dummy credentials for demonstration
-    $valid_user = "user@example.com";
-    $valid_pass = "nepal123";
-
-    if ($email_phone === $valid_user && $password === $valid_pass) {
-        $login_error =
-            "<p class='success'>Login Successful! Welcome to Nepal Tourism Info.</p>";
-    } else {
-        $login_error =
-            "<p class='error'>Invalid credentials. Please try again.</p>";
-    }
+  $email = $_POST["email"];
+  $password = $_POST["password"];
+  $encrypt = md5($password);
+  $query = "SELECT name from users WHERE email = '$email' AND password = '$encrypt'";
+  $result = mysqli_query($connection, $query);
+  if (mysqli_num_rows($result) > 0) {
+    $row = mysqli_fetch_assoc($result); 
+    $_SESSION['username'] = $row['name'];
+    header("location: index.php");
+    exit();
+  } else {
+    echo "invalid username poassword";
+  }
+  exit();
 }
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Tourism Information System - Login</title>
   <link rel="stylesheet" type="text/css" href="./public/login.css">
 </head>
+
 <body>
   <div class="login-box">
     <img src="images\logo.png" alt="Tourism Logo" class="logo">
     <h2>TOURISM INFORMATION SYSTEM</h2>
     <p>Welcome! Enter your phone or email to explore Nepal's tourism insights.</p>
 
-    <?php echo $login_error; ?>
-
     <form method="POST" action="">
-      <input type="text" name="email_phone" placeholder="Email or Phone" required>
+      <input type="text" name="email" placeholder="Email or Phone" required>
       <div class="password-wrapper">
         <input type="password" name="password" id="password" placeholder="Password" required>
         <span onclick="togglePassword()" class="toggle-eye">👁️</span>
@@ -53,4 +53,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
   </script>
 </body>
+
 </html>
